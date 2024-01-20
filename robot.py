@@ -13,6 +13,7 @@ import wpimath.controller
 import wpimath.geometry
 import wpimath.units
 import drivetrain
+import rev
 
 kP = 0.01
 kI = 2e-4
@@ -70,7 +71,8 @@ class MyRobot(wpilib.TimedRobot):
             -self.rotLimiter.calculate(
                 wpimath.applyDeadband(self.rightStick.getX(), 0.02)
             )
-            * drivetrain.kMaxSpeed
+            * drivetrain.kMaxAngularSpeed
         )
 
         self.swerve.drive(xSpeed, ySpeed, rot, fieldRelative, self.getPeriod())
+        
